@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ле &amp; Дже — SPA-салон красоты в Пыть-Яхе</title>
+<meta name="description" content="SPA-салон красоты «Ле &amp; Дже» в Пыть-Яхе: парикмахерский зал, косметология, ногтевой сервис, уход за телом и солярий. 1 микрорайон, дом 15. Приём по записи: 8 922 428-75-97.">
+<meta name="theme-color" content="#0D1F26">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1F26;
+  --pine:#153840;
+  --pine-2:#1E5259;
+  --frost:#E9F0F0;
+  --paper:#F8FBFB;
+  --brass:#B58B3C;
+  --brass-soft:#E0C489;
+  --text:#16292F;
+  --muted:#5C737A;
+  --line:rgba(13,31,38,.13);
+  --line-lt:rgba(255,255,255,.16);
+  --display:'Prata','Times New Roman',Georgia,serif;
+  --body:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --wrap:1180px;
+  --gut:clamp(20px,5vw,64px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--text);
+  font-family:var(--body);
+  font-weight:400;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:var(--brass);margin:0 0 18px;
+}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(28px,4.4vw,46px);line-height:1.15}
+h3{font-size:22px;line-height:1.25}
+p{margin:0 0 1em}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);line-height:1.6;font-weight:300}
+
+/* ---------- шапка ---------- */
+.bar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(13,31,38,.94);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--line-lt);
+  color:#fff;
+}
+.bar-in{
+  max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);
+  display:flex;align-items:center;gap:18px;min-height:66px;
+  flex-wrap:wrap;
+}
+.mark{
+  font-family:var(--display);font-size:21px;text-decoration:none;
+  letter-spacing:.06em;white-space:nowrap;margin-right:auto;
+}
+.mark em{font-style:normal;color:var(--brass-soft);padding:0 .12em}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{
+  text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.02em;
+  color:rgba(255,255,255,.82);padding:6px 0;border-bottom:1px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nav a:hover,.nav a:focus-visible{color:#fff;border-color:var(--brass)}
+.bar-tel{
+  text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap;
+  border:1px solid var(--brass);color:var(--brass-soft);
+  padding:9px 18px;border-radius:999px;transition:background .2s,color .2s;
+}
+.bar-tel:hover,.bar-tel:focus-visible{background:var(--brass);color:#12262C}
+.nav-toggle{position:absolute;opacity:0;pointer-events:none}
+.burger{display:none}
+
+/* ---------- герой ---------- */
+.hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(120% 90% at 82% 12%, #23575F 0%, rgba(35,87,95,0) 58%),
+    linear-gradient(168deg,#12313A 0%,#0D1F26 62%,#0B1A20 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:auto 0 0;height:1px;background:var(--line-lt);
+}
+.hero-in{
+  max-width:var(--wrap);margin:0 auto;padding:clamp(56px,9vw,110px) var(--gut) clamp(48px,7vw,88px);
+  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center;
+  position:relative;z-index:2;
+}
+.hero h1{
+  font-size:clamp(38px,6.4vw,74px);line-height:1.04;margin:0 0 22px;
+}
+.hero h1 span{display:block;color:var(--brass-soft)}
+.hero-lead{color:rgba(233,240,240,.78);font-size:clamp(16px,1.7vw,19px);font-weight:300;max-width:30em}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:32px 0 0}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-weight:600;font-size:15px;letter-spacing:.01em;
+  padding:15px 28px;border-radius:999px;border:1px solid transparent;
+  transition:transform .18s,background .2s,color .2s,border-color .2s;
+}
+.btn-solid{background:var(--brass);color:#12262C}
+.btn-solid:hover,.btn-solid:focus-visible{background:var(--brass-soft);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.32);color:#fff}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:#fff;background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.hero-note{
+  margin:30px 0 0;font-size:14px;color:rgba(233,240,240,.6);
+  display:flex;flex-wrap:wrap;gap:8px 22px;
+}
+.hero-note b{font-weight:600;color:rgba(233,240,240,.85)}
+
+/* монограмма — фирменный знак */
+.monogram{
+  position:relative;border:1px solid var(--line-lt);border-radius:4px;
+  padding:38px 32px;text-align:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0));
+}
+.monogram .amp{
+  font-family:var(--display);font-size:clamp(120px,17vw,190px);line-height:.82;
+  color:transparent;-webkit-text-stroke:1px var(--brass);
+  text-shadow:0 0 60px rgba(181,139,60,.28);
+  display:block;margin:0 0 10px;
+}
+.monogram .pair{
+  display:flex;justify-content:center;gap:18px;align-items:baseline;
+  font-family:var(--display);font-size:clamp(18px,2.4vw,26px);color:#fff;
+}
+.monogram .pair i{font-style:normal;color:var(--brass)}
+.monogram small{
+  display:block;margin-top:14px;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(233,240,240,.55);
+}
+
+/* ---------- секции ---------- */
+.sec{padding:clamp(64px,9vw,120px) 0}
+.sec-head{max-width:640px;margin:0 0 clamp(34px,5vw,58px)}
+.sec-head p{margin-top:18px}
+
+/* разделитель-амперсанд */
+.rule{display:flex;align-items:center;gap:18px;color:var(--brass);opacity:.85}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--line)}
+.rule span{font-family:var(--display);font-size:20px}
+
+/* ---------- кабинеты ---------- */
+.cabs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.cab{
+  background:var(--paper);padding:clamp(26px,3vw,38px);
+  display:flex;flex-direction:column;min-height:260px;
+  transition:background .25s;
+}
+.cab:hover{background:#fff}
+.cab-tag{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--brass);font-weight:600;margin-bottom:16px;
+}
+.cab h3{margin-bottom:12px}
+.cab p{font-size:15px;color:var(--muted);line-height:1.6;flex:1}
+.cab-from{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--text);font-weight:600;
+}
+.cab-from em{font-style:normal;color:var(--muted);font-weight:400}
+
+/* ---------- тёмная полоса «только у нас» ---------- */
+.band{background:var(--ink);color:#fff}
+.band .sec-head p{color:rgba(233,240,240,.72)}
+.only{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,52px);margin-top:8px}
+.only-item{border-top:1px solid var(--line-lt);padding-top:24px}
+.only-item h3{color:var(--brass-soft);margin-bottom:12px;font-size:20px}
+.only-item p{color:rgba(233,240,240,.7);font-size:15px;line-height:1.65;margin:0}
+.stats{
+  display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,64px);
+  margin-top:clamp(40px,6vw,68px);padding-top:clamp(28px,4vw,40px);
+  border-top:1px solid var(--line-lt);
+}
+.stat b{
+  display:block;font-family:var(--display);font-size:clamp(32px,4.6vw,48px);
+  color:var(--brass-soft);line-height:1;margin-bottom:8px;font-weight:400;
+}
+.stat span{font-size:13px;letter-spacing:.06em;color:rgba(233,240,240,.6)}
+
+/* ---------- прайс ---------- */
+.price-note{
+  margin:0 0 26px;font-size:14px;color:var(--muted);
+}
+details.acc{border-bottom:1px solid var(--line)}
+details.acc:first-of-type{border-top:1px solid var(--line)}
+details.acc > summary{
+  list-style:none;cursor:pointer;
+  padding:24px 44px 24px 0;position:relative;
+  font-family:var(--display);font-size:clamp(19px,2.4vw,25px);
+  transition:color .2s;
+}
+details.acc > summary::-webkit-details-marker{display:none}
+details.acc > summary:hover{color:var(--brass)}
+details.acc > summary::after{
+  content:"";position:absolute;right:6px;top:50%;
+  width:11px;height:11px;margin-top:-7px;
+  border-right:1px solid var(--brass);border-bottom:1px solid var(--brass);
+  transform:rotate(45deg);transition:transform .25s;
+}
+details.acc[open] > summary::after{transform:rotate(-135deg);margin-top:-3px}
+details.acc > summary small{
+  display:block;font-family:var(--body);font-size:13px;color:var(--muted);
+  letter-spacing:.02em;margin-top:6px;
+}
+.rows{padding:0 0 30px}
+.row{
+  display:flex;gap:16px;align-items:baseline;
+  padding:11px 0;border-bottom:1px dotted rgba(13,31,38,.16);
+  font-size:15px;
+}
+.row:last-child{border-bottom:0}
+.row .nm{flex:1;color:var(--text)}
+.row .nm i{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:2px}
+.row .pr{white-space:nowrap;font-weight:600;color:var(--pine-2)}
+.rows-sub{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);
+  font-weight:600;margin:22px 0 6px;
+}
+.rows-sub:first-child{margin-top:0}
+.rows-more{margin:18px 0 0;font-size:14px;color:var(--muted)}
+
+/* ---------- отзывы ---------- */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px)}
+.quote{
+  background:var(--frost);padding:clamp(28px,3.4vw,42px);border-radius:3px;
+  position:relative;
+}
+.quote::before{
+  content:"«";font-family:var(--display);font-size:64px;line-height:1;
+  color:var(--brass);opacity:.35;position:absolute;top:14px;left:20px;
+}
+.quote p{
+  font-family:var(--display);font-size:clamp(18px,2.1vw,22px);line-height:1.45;
+  margin:0 0 20px;position:relative;
+}
+.quote cite{font-style:normal;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- акция ---------- */
+.promo{
+  display:flex;flex-wrap:wrap;align-items:center;gap:20px 40px;
+  border:1px solid var(--brass);border-radius:3px;
+  padding:clamp(24px,3.4vw,38px);margin-top:clamp(40px,6vw,64px);
+  background:linear-gradient(120deg,rgba(181,139,60,.09),rgba(181,139,60,0));
+}
+.promo h3{font-size:clamp(20px,2.6vw,27px);flex:1;min-width:260px;margin:0}
+.promo p{margin:0;font-size:15px;color:var(--muted);max-width:34em}
+
+/* ---------- контакты ---------- */
+.contacts{background:var(--ink);color:#fff}
+.cont-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,80px);align-items:start}
+.cont-grid h2{color:#fff}
+.cont-list{list-style:none;margin:34px 0 0;padding:0}
+.cont-list li{padding:20px 0;border-top:1px solid var(--line-lt)}
+.cont-list b{
+  display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--brass);font-weight:600;margin-bottom:8px;
+}
+.cont-list a{text-decoration:none;border-bottom:1px solid rgba(224,196,137,.4)}
+.cont-list a:hover{border-color:var(--brass-soft)}
+.cont-big{
+  font-family:var(--display);font-size:clamp(26px,3.6vw,38px);
+  color:#fff;text-decoration:none;letter-spacing:.01em;border:0;
+}
+.cont-big:hover{color:var(--brass-soft)}
+.cont-card{
+  border:1px solid var(--line-lt);border-radius:3px;padding:clamp(26px,3.4vw,38px);
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0));
+}
+.cont-card h3{color:var(--brass-soft);font-size:20px;margin-bottom:14px}
+.cont-card p{color:rgba(233,240,240,.72);font-size:15px}
+.cont-card .btn{margin-top:10px}
+
+/* ---------- подвал ---------- */
+.foot{background:#0A171C;color:rgba(233,240,240,.55);font-size:13px}
+.foot-in{
+  max-width:var(--wrap);margin:0 auto;padding:30px var(--gut);
+  display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;
+}
+.foot a{color:rgba(233,240,240,.75);text-decoration:none}
+.foot a:hover{color:var(--brass-soft)}
+
+/* мобильная панель записи */
+.dock{display:none}
+
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ---------- адаптив ---------- */
+@media (max-width:960px){
+  .hero-in{grid-template-columns:1fr;padding-top:clamp(40px,8vw,70px)}
+  .monogram{order:-1;padding:26px 20px}
+  .monogram .amp{font-size:clamp(96px,26vw,150px)}
+  .cabs{grid-template-columns:1fr 1fr}
+  .only{grid-template-columns:1fr;gap:26px}
+  .quotes{grid-template-columns:1fr}
+  .cont-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:720px){
+  body{font-size:16px}
+  .burger{
+    display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:42px;height:42px;cursor:pointer;order:3;
+  }
+  .burger i{display:block;height:1.5px;background:#fff;transition:transform .25s,opacity .25s}
+  .nav-toggle:checked ~ .burger i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-toggle:checked ~ .burger i:nth-child(2){opacity:0}
+  .nav-toggle:checked ~ .burger i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .bar-in{min-height:60px;gap:10px}
+  .bar-tel{order:2;padding:8px 14px;font-size:13px}
+  .nav{
+    order:4;flex-basis:100%;flex-direction:column;align-items:stretch;gap:0;
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .nav a{padding:14px 2px;border-bottom:1px solid var(--line-lt)}
+  .nav a:last-child{border-bottom:0}
+  .nav-toggle:checked ~ .nav{max-height:340px;padding-bottom:12px}
+  .cabs{grid-template-columns:1fr}
+  .cab{min-height:0}
+  .cta-row .btn{flex:1;justify-content:center;min-width:190px}
+  .row{flex-wrap:wrap;gap:4px 16px}
+  .dock{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(13,31,38,.96);border-top:1px solid var(--line-lt);
+  }
+  .dock a{
+    flex:1;text-align:center;text-decoration:none;background:var(--brass);color:#12262C;
+    font-weight:700;font-size:15px;padding:14px;border-radius:999px;
+  }
+  .foot-in{padding-bottom:88px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+
+@media print{
+  .bar,.dock,.hero,.promo{display:none}
+  body{background:#fff}
+  details.acc{border:0}
+  .rows{display:block!important}
+}
+</style>
+</head>
+<body id="top">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="mark" href="#top">Ле<em>&amp;</em>Дже</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+    <label class="burger" for="nav-toggle" aria-hidden="true"><i></i><i></i><i></i></label>
+    <a class="bar-tel" href="tel:+79224287597">8 922 428-75-97</a>
+    <nav class="nav">
+      <a href="#kabinety">Кабинеты</a>
+      <a href="#osobennoe">Что только у нас</a>
+      <a href="#ceny">Цены</a>
+      <a href="#otzyvy">Отзывы</a>
+      <a href="#kontakty">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ГЕРОЙ -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <p class="eyebrow">Пыть-Ях · 1 микрорайон, дом 15</p>
+      <h1>Салон красоты<br>для леди <span>и джентльменов</span></h1>
+      <p class="hero-lead">Пять кабинетов под одной крышей: парикмахерский зал, косметология, ногтевой сервис, SPA-уход за телом и солярий. Приходите за одной процедурой — или проведите у нас весь день.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="tel:+79224287597">Записаться по телефону</a>
+        <a class="btn btn-ghost" href="#ceny">Посмотреть цены</a>
+      </div>
+      <p class="hero-note">
+        <span><b>Приём по записи</b></span>
+        <span>Победитель профессионального конкурса</span>
+      </p>
+    </div>
+
+    <div class="monogram">
+      <span class="amp" aria-hidden="true">&amp;</span>
+      <div class="pair"><span>Ле</span><i>&amp;</i><span>Дже</span></div>
+      <small>Леди и джентльмены</small>
+    </div>
+  </div>
+</section>
+
+<!-- КАБИНЕТЫ -->
+<section class="sec" id="kabinety">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Пять в одном</p>
+      <h2>Всё, что нужно, чтобы быть ухоженным</h2>
+      <p class="lead">Каждый кабинет ведёт свой мастер, а работают они в связке: после окрашивания можно сразу перейти на уход за руками, после массажа — в солярий.</p>
+    </div>
+
+    <div class="cabs">
+      <article class="cab">
+        <p class="cab-tag">Кабинет</p>
+        <h3>Парикмахерский зал</h3>
+        <p>Женский и мужской мастер. Стрижки, окрашивание Indola, брондирование, шатуш, «омбре», свадебные причёски. Десять программ кератинового ухода — от выпрямления до глубокой реконструкции.</p>
+        <p class="cab-from">Стрижка — 500 ₽ <em>· мужская — от 400 ₽</em></p>
+      </article>
+
+      <article class="cab">
+        <p class="cab-tag">Кабинет</p>
+        <h3>Косметология</h3>
+        <p>Чистки, массажи лица, более 30 видов пилингов, комплексные уходы Christina и Magiray. Инъекционные методики — строго по показаниям и без гиперкоррекции.</p>
+        <p class="cab-from">Чистка лица — 1500 ₽ <em>· пилинги — от 1500 ₽</em></p>
+      </article>
+
+      <article class="cab">
+        <p class="cab-tag">Кабинет</p>
+        <h3>Ногтевой сервис</h3>
+        <p>Маникюр и педикюр всех техник, гель-лак, наращивание на материалах IBD и EzFlow. Индивидуальный дизайн: френч, лепка, роспись, арочные ногти и стилеты.</p>
+        <p class="cab-from">Маникюр — 350 ₽ <em>· педикюр — от 1200 ₽</em></p>
+      </article>
+
+      <article class="cab">
+        <p class="cab-tag">Кабинет</p>
+        <h3>Тело и коррекция фигуры</h3>
+        <p>62 программы: обёртывания, детокс, антицеллюлитные курсы, стоунтерапия, шоколадный и медовый массаж. Есть сауна и программы «День невесты» и «День жениха».</p>
+        <p class="cab-from">Массаж — от 700 ₽ <em>· SPA-программы — от 2000 ₽</em></p>
+      </article>
+
+      <article class="cab">
+        <p class="cab-tag">Кабинет</p>
+        <h3>Солярий</h3>
+        <p>Ровный загар с кремами SOLEO. Большой выбор средств в саше — для загара, после него и для защиты родинок, пигментных пятен и губ. Есть автозагар для лица.</p>
+        <p class="cab-from">15 ₽ за минуту <em>· абонемент — с бонусными минутами</em></p>
+      </article>
+
+      <article class="cab">
+        <p class="cab-tag">Консультация</p>
+        <h3>Подбор косметики</h3>
+        <p>Косметолог подберёт гипоаллергенный домашний уход под ваш тип кожи: Magiray и Christina (Израиль), Chris Farrell и Phyris (Германия), Keenwell (Испания), Teoseal (Швейцария).</p>
+        <p class="cab-from">По записи <em>· с разбором вашего типа кожи</em></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ТОЛЬКО У НАС -->
+<section class="sec band" id="osobennoe">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Оборудование</p>
+      <h2>Чего больше нет в городе</h2>
+      <p>Три аппарата и методики, ради которых к нам приезжают из соседних районов.</p>
+    </div>
+
+    <div class="only">
+      <div class="only-item">
+        <h3>Лазер Kiti-9</h3>
+        <p>Удаление татуировок и неудачного перманентного макияжа короткоимпульсным ND:YAG-лазером — без повреждения кожи. Оплата по вспышкам: чем больше объём, тем ниже цена за вспышку.</p>
+      </div>
+      <div class="only-item">
+        <h3>SPA OXY</h3>
+        <p>Кислородные мезококтейли и OXY-SPA омоложение. Обрабатываем лицо, шею, декольте, живот, внутреннюю поверхность рук и ног — по одной зоне за сеанс.</p>
+      </div>
+      <div class="only-item">
+        <h3>30+ видов пилингов</h3>
+        <p>Renophase, Enerpeel, Mediderma, Christina, Skin Medica. Подбираем под тип кожи и возраст, есть всесезонные мультикислотные варианты.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>5</b><span>кабинетов в одном салоне</span></div>
+      <div class="stat"><b>62</b><span>программы для тела</span></div>
+      <div class="stat"><b>10</b><span>видов кератинового ухода</span></div>
+      <div class="stat"><b>1&nbsp;место</b><span>на профессиональном конкурсе</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕНЫ -->
+<section class="sec" id="ceny">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Прайс</p>
+      <h2>Цены</h2>
+      <p class="lead">Основные позиции по каждому кабинету. Полный прайс — несколько сотен процедур, поэтому точную стоимость вашей программы назовём при записи.</p>
+    </div>
+
+    <p class="price-note">Нажмите на кабинет, чтобы раскрыть список.</p>
+
+    <details class="acc" open>
+      <summary>Парикмахерский зал<small>Indola (Германия), L'ANZA и Hair Go Straight (США)</small></summary>
+      <div class="rows">
+        <p class="rows-sub">Женский мастер</p>
+        <div class="row"><span class="nm">Стрижка волос</span><span class="pr">500 ₽</span></div>
+        <div class="row"><span class="nm">Детская стрижка <i>до 10 лет</i></span><span class="pr">300 ₽</span></div>
+        <div class="row"><span class="nm">Сушка с элементами лёгкой укладки</span><span class="pr">250 ₽</span></div>
+        <div class="row"><span class="nm">Укладка феном</span><span class="pr">от 500 ₽</span></div>
+        <div class="row"><span class="nm">Длительная укладка <i>держится 1–1,5 месяца</i></span><span class="pr">1200–1900 ₽</span></div>
+        <div class="row"><span class="nm">Окрашивание «под ключ» <i>краска, мытьё и сушка</i></span><span class="pr">от 1050 ₽</span></div>
+        <div class="row"><span class="nm">Мелирование и колорирование</span><span class="pr">от 1300 ₽</span></div>
+        <div class="row"><span class="nm">Брондирование, «омбре», шатуш</span><span class="pr">от 1300 ₽</span></div>
+        <div class="row"><span class="nm">Химическая завивка</span><span class="pr">от 1300 ₽</span></div>
+        <div class="row"><span class="nm">Слайзинг горячим лезвием <i>убирает секущиеся концы</i></span><span class="pr">от 700 ₽</span></div>
+        <div class="row"><span class="nm">Свадебная и вечерняя причёска</span><span class="pr">от 800 ₽</span></div>
+        <div class="row"><span class="nm">Плетение объёмной косы</span><span class="pr">от 800 ₽</span></div>
+
+        <p class="rows-sub">Кератиновые программы</p>
+        <div class="row"><span class="nm">Кератиновое запечатывание <i>выпрямление на 5–6 месяцев</i></span><span class="pr">от 4000 ₽</span></div>
+        <div class="row"><span class="nm">Кератиновый уход и восстановление структуры</span><span class="pr">от 2000 ₽</span></div>
+        <div class="row"><span class="nm">SPA-глянцевание волос</span><span class="pr">от 2500 ₽</span></div>
+        <div class="row"><span class="nm">Глубокая реконструкция L'ANZA</span><span class="pr">от 3500 ₽</span></div>
+
+        <p class="rows-sub">Мужской мастер</p>
+        <div class="row"><span class="nm">Модельная стрижка</span><span class="pr">600 ₽</span></div>
+        <div class="row"><span class="nm">«Канадка»</span><span class="pr">550 ₽</span></div>
+        <div class="row"><span class="nm">«Бокс», «полубокс»</span><span class="pr">500 ₽</span></div>
+        <div class="row"><span class="nm">«Площадка»</span><span class="pr">700 ₽</span></div>
+        <div class="row"><span class="nm">Стрижка под насадку</span><span class="pr">550 ₽</span></div>
+        <div class="row"><span class="nm">Стрижка бороды и усов</span><span class="pr">от 400 ₽</span></div>
+        <div class="row"><span class="nm">Дизайн машинкой <i>к любой стрижке</i></span><span class="pr">500 ₽</span></div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Косметология<small>Christina, Magiray, Renophase, Enerpeel, Skin Medica</small></summary>
+      <div class="rows">
+        <p class="rows-sub">Уход за лицом</p>
+        <div class="row"><span class="nm">Гигиеническая чистка лица <i>шесть методик на выбор</i></span><span class="pr">1500 ₽</span></div>
+        <div class="row"><span class="nm">Косметический массаж лица и шеи <i>+ препарат по типу кожи</i></span><span class="pr">от 500 ₽</span></div>
+        <div class="row"><span class="nm">Египетский массаж «Клеопатра»</span><span class="pr">800 ₽</span></div>
+        <div class="row"><span class="nm">Anti-wrinkle: лифтинговый экспресс-массаж</span><span class="pr">2500 ₽</span></div>
+        <div class="row"><span class="nm">Комплексные уходы Christina</span><span class="pr">от 2000 ₽</span></div>
+        <div class="row"><span class="nm">Уход за областью век</span><span class="pr">от 1000 ₽</span></div>
+        <div class="row"><span class="nm">Пилинги <i>более 30 видов</i></span><span class="pr">от 1500 ₽</span></div>
+        <div class="row"><span class="nm">Маски для лица</span><span class="pr">от 70 ₽</span></div>
+
+        <p class="rows-sub">Аппаратные методики</p>
+        <div class="row"><span class="nm">Ультразвуковой лифтинг <i>верхнее веко и подбородок</i></span><span class="pr">1500 ₽</span></div>
+        <div class="row"><span class="nm">Кислородное омоложение OXY-SPA <i>одна зона</i></span><span class="pr">от 1500 ₽</span></div>
+        <div class="row"><span class="nm">Ионофорез</span><span class="pr">от 800 ₽</span></div>
+        <div class="row"><span class="nm">Дарсонвализация лица и волос</span><span class="pr">300 ₽</span></div>
+        <div class="row"><span class="nm">Лазерное удаление тату и перманентного макияжа</span><span class="pr">от 70 ₽ за вспышку</span></div>
+
+        <p class="rows-sub">Брови, ресницы, макияж</p>
+        <div class="row"><span class="nm">Коррекция бровей</span><span class="pr">300 ₽</span></div>
+        <div class="row"><span class="nm">Окрашивание бровей или ресниц</span><span class="pr">200 ₽</span></div>
+        <div class="row"><span class="nm">Наращивание ресниц</span><span class="pr">от 1500 ₽</span></div>
+        <div class="row"><span class="nm">Праздничный и свадебный макияж</span><span class="pr">1500 ₽</span></div>
+        <div class="row"><span class="nm">Перманентный макияж <i>с обязательной коррекцией</i></span><span class="pr">от 4000 ₽</span></div>
+
+        <p class="rows-sub">Депиляция</p>
+        <div class="row"><span class="nm">SPA-депиляция сахарной пастой <i>пилинг, массаж, обёртывание</i></span><span class="pr">от 500 ₽</span></div>
+        <div class="row"><span class="nm">Депиляция воском</span><span class="pr">от 500 ₽</span></div>
+
+        <p class="rows-sub">Эстетическая косметология</p>
+        <div class="row"><span class="nm">Мезотерапия INNO-TDS</span><span class="pr">от 1700 ₽</span></div>
+        <div class="row"><span class="nm">Биоревитализация</span><span class="pr">от 8000 ₽</span></div>
+        <div class="row"><span class="nm">Контурная пластика</span><span class="pr">от 11 000 ₽</span></div>
+        <div class="row"><span class="nm">Ботокс <i>за единицу</i></span><span class="pr">400 ₽</span></div>
+        <p class="rows-more">Инъекционные процедуры проводим строго по показаниям и после консультации.</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Ногтевой сервис<small>IBD, EzFlow (США), Patrisa Nail (Германия)</small></summary>
+      <div class="rows">
+        <p class="rows-sub">Маникюр</p>
+        <div class="row"><span class="nm">Классический, европейский или комбинированный</span><span class="pr">350 ₽</span></div>
+        <div class="row"><span class="nm">Аппаратный <i>без обрезного / с обрезным</i></span><span class="pr">450 / 550 ₽</span></div>
+        <div class="row"><span class="nm">Покрытие гель-лаком</span><span class="pr">1000–1500 ₽</span></div>
+        <div class="row"><span class="nm">Французское покрытие</span><span class="pr">300 ₽</span></div>
+        <div class="row"><span class="nm">Укрепление натуральных ногтей</span><span class="pr">от 1300 ₽</span></div>
+        <div class="row"><span class="nm">Дизайн <i>за один ноготь</i></span><span class="pr">от 20 ₽</span></div>
+        <div class="row"><span class="nm">SPA-уход за руками <i>кисти / до локтя</i></span><span class="pr">800 / 1200 ₽</span></div>
+        <div class="row"><span class="nm">Парафинотерапия</span><span class="pr">1000 ₽</span></div>
+        <div class="row"><span class="nm">Мужской маникюр</span><span class="pr">400 ₽</span></div>
+
+        <p class="rows-sub">Наращивание</p>
+        <div class="row"><span class="nm">Классическое наращивание</span><span class="pr">1500–1700 ₽</span></div>
+        <div class="row"><span class="nm">Френч <i>двадцать дизайнов: перламутр, фольга, перо, сухоцветы</i></span><span class="pr">1500–1700 ₽</span></div>
+        <div class="row"><span class="nm">Коррекция <i>простая / сложная</i></span><span class="pr">1000 / 1200 ₽</span></div>
+        <div class="row"><span class="nm">Снятие ногтей</span><span class="pr">500 ₽</span></div>
+
+        <p class="rows-sub">Педикюр</p>
+        <div class="row"><span class="nm">Классический с массажем</span><span class="pr">1200–1500 ₽</span></div>
+        <div class="row"><span class="nm">Аппаратный с обрезным</span><span class="pr">1700 ₽</span></div>
+        <div class="row"><span class="nm">SPA-уход <i>до щиколотки / до колена</i></span><span class="pr">900 / 1500 ₽</span></div>
+        <div class="row"><span class="nm">Парафинотерапия <i>до щиколотки / до колена</i></span><span class="pr">1200 / 1700 ₽</span></div>
+        <div class="row"><span class="nm">Массаж ног <i>до щиколотки / до колена</i></span><span class="pr">400 / 700 ₽</span></div>
+        <div class="row"><span class="nm">Мужской педикюр</span><span class="pr">1500 ₽</span></div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Тело и коррекция фигуры<small>Keenwell, Altamarine, Chris Farrell, Magiray — 62 программы</small></summary>
+      <div class="rows">
+        <p class="rows-sub">Массаж</p>
+        <div class="row"><span class="nm">Массаж спины</span><span class="pr">1000 ₽</span></div>
+        <div class="row"><span class="nm">Массаж ног до колена</span><span class="pr">700 ₽</span></div>
+        <div class="row"><span class="nm">Общий массаж по аромамаслам</span><span class="pr">2000 ₽</span></div>
+        <div class="row"><span class="nm">Антицеллюлитный массаж</span><span class="pr">1600 ₽</span></div>
+        <div class="row"><span class="nm">Испанский антицеллюлитный массаж</span><span class="pr">2000 ₽</span></div>
+        <div class="row"><span class="nm">Хиромассаж</span><span class="pr">2500 ₽</span></div>
+        <div class="row"><span class="nm">Мыльный массаж <i>с душем и уходовым кремом</i></span><span class="pr">2500 ₽</span></div>
+        <div class="row"><span class="nm">Шоколадный массаж <i>по тёплому шоколаду</i></span><span class="pr">3000 ₽</span></div>
+        <div class="row"><span class="nm">Стоунтерапия <i>горячие и холодные камни</i></span><span class="pr">3000 ₽</span></div>
+        <div class="row"><span class="nm">Медовый локальный массаж</span><span class="pr">от 300 ₽</span></div>
+
+        <p class="rows-sub">Комплексные SPA-уходы</p>
+        <div class="row"><span class="nm">«Зелёный кофе» с антицеллюлитным массажем <i>1 ч 40 мин</i></span><span class="pr">2000 ₽</span></div>
+        <div class="row"><span class="nm">«Стройное тело», тропическое SPA <i>1 ч 45 мин</i></span><span class="pr">2500 ₽</span></div>
+        <div class="row"><span class="nm">Водорослевое обёртывание <i>2 ч 30 мин</i></span><span class="pr">3500 ₽</span></div>
+        <div class="row"><span class="nm">Шоколадный уход с общим массажем <i>1 ч 50 мин</i></span><span class="pr">3000 ₽</span></div>
+        <div class="row"><span class="nm">Уходы Chris Farrell с сауной <i>2 ч 30 мин</i></span><span class="pr">от 4500 ₽</span></div>
+        <div class="row"><span class="nm">«День невесты» и «День жениха»</span><span class="pr">4500 ₽</span></div>
+        <div class="row"><span class="nm">Антистресс-программа для мужчин <i>сауна и релакс-массаж</i></span><span class="pr">4000 ₽</span></div>
+
+        <p class="rows-sub">Коррекция фигуры</p>
+        <div class="row"><span class="nm">Детокс-обёртывание <i>локальное / общее</i></span><span class="pr">1000–3500 ₽</span></div>
+        <div class="row"><span class="nm">Холодное обёртывание Frioderm</span><span class="pr">от 1500 ₽</span></div>
+        <div class="row"><span class="nm">Контрастные обёртывания с массажем</span><span class="pr">от 3800 ₽</span></div>
+        <div class="row"><span class="nm">Программы для похудения</span><span class="pr">от 3000 ₽</span></div>
+        <div class="row"><span class="nm">Программа против растяжек</span><span class="pr">3000 ₽</span></div>
+        <div class="row"><span class="nm">Лимфодренажный вибромассаж <i>за позицию</i></span><span class="pr">от 60 ₽</span></div>
+        <p class="rows-more">Курсовые программы: 12 процедур три раза в неделю, дальше поддерживающий уход раз в 10–12 дней.</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Солярий<small>Кремы SOLEO, средства в саше, автозагар</small></summary>
+      <div class="rows">
+        <div class="row"><span class="nm">Одна минута загара</span><span class="pr">15 ₽</span></div>
+        <div class="row"><span class="nm">Абонемент 50 минут <i>плюс 10 минут в подарок</i></span><span class="pr">500 ₽</span></div>
+        <div class="row"><span class="nm">Абонемент 100 минут <i>плюс 20 минут в подарок</i></span><span class="pr">1000 ₽</span></div>
+        <div class="row"><span class="nm">Нанесение крема для загара SOLEO</span><span class="pr">150 ₽</span></div>
+        <p class="rows-more">В продаже средства для загара, после загара и для закрепления, защита родинок, пигментных пятен и губ.</p>
+      </div>
+    </details>
+
+    <div class="promo">
+      <h3>Скидка 10% на педикюр</h3>
+      <p>Первым пяти посетителям каждого месяца. Скажите об акции при записи — мастер зарезервирует место.</p>
+      <a class="btn btn-solid" href="tel:+79224287597">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section class="sec" id="otzyvy" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="rule" aria-hidden="true"><span>&amp;</span></div>
+    <div class="sec-head" style="margin-top:clamp(34px,5vw,58px)">
+      <p class="eyebrow">Отзывы</p>
+      <h2>Что говорят гости</h2>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote">
+        <p>Очень понравилось обслуживание, всё на высшем уровне. Осталась очень довольна.</p>
+        <cite>Елена Петровна</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>Понравилась процедура водорослевого обёртывания: кожа шелковистая. Рекомендую.</p>
+        <cite>Светлана Наумова</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="sec contacts" id="kontakty">
+  <div class="wrap">
+    <div class="cont-grid">
+      <div>
+        <p class="eyebrow">Контакты</p>
+        <h2>Ждём вас по записи</h2>
+        <ul class="cont-list">
+          <li>
+            <b>Телефон</b>
+            <a class="cont-big" href="tel:+79224287597">8 922 428-75-97</a>
+          </li>
+          <li>
+            <b>Адрес</b>
+            ХМАО-Югра, город Пыть-Ях,<br>1 микрорайон, дом 15.<br>
+            Вход справа от здания администрации.
+          </li>
+          <li>
+            <b>Как попасть</b>
+            Приём по записи — позвоните, и мастер подберёт удобное время.
+          </li>
+        </ul>
+      </div>
+
+      <div class="cont-card">
+        <h3>Не знаете, с чего начать?</h3>
+        <p>Опишите по телефону, что хочется изменить, — администратор подскажет, какой кабинет подойдёт и сколько времени займёт процедура. Комплексные программы лучше планировать заранее: некоторые идут до двух с половиной часов.</p>
+        <a class="btn btn-solid" href="tel:+79224287597">Позвонить в салон</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>SPA-салон красоты «Ле&nbsp;&amp;&nbsp;Дже», Пыть-Ях</span>
+    <span><a href="tel:+79224287597">8 922 428-75-97</a> · 1 микрорайон, дом 15</span>
+  </div>
+</footer>
+
+<div class="dock">
+  <a href="tel:+79224287597">Записаться · 8 922 428-75-97</a>
+</div>
+
+</body>
+</html>
